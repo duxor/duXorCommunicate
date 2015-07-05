@@ -14,7 +14,7 @@ Klasa je pisana kao dodatak Laravel framework-a, za potrebe aktivne komunikacije
 		{!!Form::hidden('_token',csrf_token())!!}
 		{!!Form::text('prezime',null,['class'=>'form-control'])!!}
 		{!!Form::text('ime',null,['class'=>'form-control'])!!}
-		{!!Form::button('<span class="glyphicon glyphicon-save"></span> Sačuvaj',['class'=>'btn btn-lg btn-primary','onclick'=>'Komunikacija.posalji("/url","podaciID","poruka","wait","hide")'])!!}
+		{!!Form::button('<span class="glyphicon glyphicon-save"></span> Sačuvaj',['class'=>'btn btn-lg btn-primary','onclick'=>'duXorCommunicate.posalji("/url","podaciID","poruka","wait","hide")'])!!}
 	</div>
 ```
 **Laravel metoda*
