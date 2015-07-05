@@ -3,7 +3,7 @@
 
 Klasa je pisana kao dodatak Laravel framework-a, za potrebe aktivne komunikacije sa php skriptama kroz jQuery.
 
-# Detaljno objašnjenje je u pripremi, ispod je navedeno samo osnovni primjer korištenja!
+# Detaljno objašnjenje je u pripremi, ispod je naveden samo osnovni primjer korištenja!
 
 **HTML**  
 
