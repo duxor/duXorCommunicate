@@ -54,7 +54,7 @@ var duXorCommunicate = {
             var inputi = $('#' + podaciID + ' :input');
             i = inputi.length - 1;
         }
-        podaci[inputi[i].name]=inputi[i].value;
+        if(inputi[i].name) podaci[inputi[i].name]=inputi[i].value;
         if(i==0) return podaci;
         return this.podaci(i-1,inputi,null,podaci);
     },
