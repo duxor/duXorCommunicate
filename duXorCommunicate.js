@@ -29,7 +29,11 @@
 */
 var duXorCommunicate = {
 	posalji: function(url,podaciID,poruka,wait,hide){
+		var id = window.setTimeout(function() {}, 0);
+		while (id--) {window.clearTimeout(id);}
+		
 		var podaci=this.podaci('',null,podaciID,{});
+		$('#'+poruka).hide();
 		$('#'+hide).hide();
 		$('#'+wait).fadeToggle();
 		$.post(url,
@@ -40,11 +44,8 @@ var duXorCommunicate = {
 			function(data){
 				data=JSON.parse(data);
 				$('#'+poruka).html('<div class="alert alert-'+ (data['check']?'success':'danger') +'" role="alert">'+data['msg']+'</div>');
-				$('#'+wait).stop().hide();
+				$('#'+wait).hide();
 				$('#'+poruka).fadeIn('slow');
-
-				var id = window.setTimeout(function() {}, 0);
-				while (id--) {window.clearTimeout(id);}
 
 				window.setTimeout(function(){
 					$('#'+poruka).stop().fadeOut('slow');
