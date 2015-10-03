@@ -28,27 +28,31 @@
  ###
 */
 var duXorCommunicate = {
-    posalji: function(url,podaciID,poruka,wait,hide){
-        var podaci=this.podaci('',null,podaciID,{});
-        $('#'+hide).css('display','none');
-        $('#'+wait).fadeToggle();
-        $.post(url,
-            {
-                _token:podaci['_token'],
-                podaci:JSON.stringify(podaci)
-            },
-            function(data){
-                data=JSON.parse(data);
-                $('#'+poruka).html('<div class="alert alert-'+ (data['check']?'success':'danger') +'" role="alert">'+data['msg']+'</div>');
-                $('#'+wait).fadeToggle();
-                $('#'+poruka).fadeToggle('slow');
-                window.setTimeout(function(){
-                    $('#'+poruka).fadeToggle('slow');
-                    $('#'+hide).fadeToggle('slow')
-                },5000);
-            }
-        );
-    },
+	posalji: function(url,podaciID,poruka,wait,hide){
+		var podaci=this.podaci('',null,podaciID,{});
+		$('#'+hide).hide();
+		$('#'+wait).fadeToggle();
+		$.post(url,
+			{
+				_token:podaci['_token'],
+				podaci:JSON.stringify(podaci)
+			},
+			function(data){
+				data=JSON.parse(data);
+				$('#'+poruka).html('<div class="alert alert-'+ (data['check']?'success':'danger') +'" role="alert">'+data['msg']+'</div>');
+				$('#'+wait).stop().hide();
+				$('#'+poruka).fadeIn('slow');
+
+				var id = window.setTimeout(function() {}, 0);
+				while (id--) {window.clearTimeout(id);}
+
+				window.setTimeout(function(){
+					$('#'+poruka).stop().fadeOut('slow');
+					$('#'+hide).stop().fadeToggle('slow')
+				},5000);
+			}
+		);
+	},
     podaci:function(i,inputi,podaciID,podaci){
         if(inputi==null) {
             var inputi = $('#' + podaciID + ' :input');
